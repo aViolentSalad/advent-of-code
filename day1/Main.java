@@ -1,10 +1,16 @@
 package day1;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String filename = "day1/input.txt";
-        ArrayList<Integer> inputs = Reader.read(filename);
+        String fileName = "day1/input.txt";
+        FileInputStream file = new FileInputStream(fileName);
+        Kattio io = new Kattio(file,System.out);
+        ArrayList<Integer> inputs = new ArrayList<>();
+        while (io.hasMoreTokens()){
+            inputs.add(io.getInt());
+        }
         int n = inputs.get(0)+inputs.get(1)+inputs.get(2);
         int sum ;
         int count = 0;
@@ -15,6 +21,7 @@ public class Main {
             }
             n=sum;
         }
-        System.out.println(count);
+        io.println(count);
+        io.close();
     }    
 }
